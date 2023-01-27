@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "blog-api-debugger",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "debug"],
+      "runtimeExecutable": "npm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    }
+  ]
+}

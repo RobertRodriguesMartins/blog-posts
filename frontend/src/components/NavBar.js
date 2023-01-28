@@ -5,9 +5,15 @@ import { HiDotsVertical } from 'react-icons/hi';
 
 function NavBar() {
   const { pathname } = useLocation();
-
   const [isNavOpened, setIsNavOpened] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
+
+  function logOut() {
+    if (isLogged) {
+      localStorage.removeItem('token')
+      setIsLogged(false)
+    }
+  }
 
   function openNav() {
     document.getElementsByTagName('nav')[0].setAttribute('class', 'sidebar');
@@ -40,6 +46,18 @@ function NavBar() {
       document.getElementById('/').setAttribute('class', 'current-nav-section');
     }
   }, [pathname]);
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem('token');
+      if (token && isLogged === false) {
+        setIsLogged(true)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }, [isLogged])
+
   return (
     <nav className="nav-menu">
       <section className="nav-user-mobile">
@@ -64,18 +82,23 @@ function NavBar() {
               <Link to="/me/favorites">
                 <li>Favoritos</li>
               </Link>
+              <button
+                type="button"
+                onClick={logOut}
+              >
+                Sair
+              </button>
             </>
           ) : (
             <>
-              <Link to="/login">
+              <Link to="/signin">
                 <li>Fazer Login</li>
               </Link>
-              <Link to="/signin">
-                <li id="/signin">Criar Perfil</li>
+              <Link to="/signup">
+                <li id="/signup">Criar Perfil</li>
               </Link>
             </>
           )}
-          <li>Sobre</li>
         </ul>
       </section>
       <section

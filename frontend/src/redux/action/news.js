@@ -119,7 +119,7 @@ export const createUserThunk = (myform) => async (dispatch) => {
     }
   } catch (e) {
     dispatch(setToken(false));
-    console.log(e);
+    return true
   }
 };
 

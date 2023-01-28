@@ -7,7 +7,7 @@ const loginSchema = {
       'any.required': 'Some required fields are missing',
       'string.empty': 'Some required fields are missing',
     }),
-    password: Joi.string().min(1).required().messages({
+    password: Joi.string().min(6).required().messages({
       'any.required': 'Some required fields are missing',
       'string.empty': 'Some required fields are missing',
     }),

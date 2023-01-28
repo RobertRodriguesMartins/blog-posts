@@ -195,6 +195,22 @@ a {
   cursor: pointer;
 }
 
+.nav-menu button {
+  background: none;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+  font-family: unset;
+  font-size: 16px;
+  max-height: 43.19px;
+}
+
+.nav-menu button:hover {
+  transition: 0.2 ease;
+  background: rgb(0, 0, 0, 1);
+  border-radius: 10px;
+}
+
 .nav-menu ul li:hover {
   transition: 0.2 ease;
   background: rgb(0, 0, 0, 1);
@@ -476,11 +492,7 @@ a {
 }
 
 .sucess-send-post {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
+  margin: 25% !important;
   justify-content: center;
 }
 
@@ -809,6 +821,23 @@ a {
     font-size: 22px;
   }
 
+  .sidebar section {
+    cursor: pointer;
+  }
+
+  .sidebar button {
+    color: white;
+    font-size: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: unset;
+    font-family: unset;
+    width: 100%;
+    display: flex;
+    line-height: 2.7em;
+  }
+
   .search {
     background: rgba(255, 255, 255, 0.1);
     display: flex;
@@ -864,6 +893,15 @@ a {
 
   .app-news-section-side {
     display: none;
+  }
+
+  .sucess-send-post {
+    display: flex !important;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
   }
 
   ::-webkit-scrollbar {

@@ -4,10 +4,10 @@ const required = 'Some required fields are missing';
 
 const userSchema = {
   create: Joi.object({
-    displayName: Joi.string().min(8).required().messages({
+    displayName: Joi.string().min(4).required().messages({
       'any.required': required,
       'string.empty': required,
-      'string.min': '"displayName" length must be at least 8 characters long',
+      'string.min': '"displayName" length must be at least 4 characters long',
     }),
     email: Joi.string().min(1).email().required()
 .messages({

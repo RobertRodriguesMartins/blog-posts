@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import App from './App';
-import { CreateNews, CreateUser } from './components/';
+import { CreateNews, CreateUser, Login } from './components/';
 
 function Router() {
   return (
@@ -9,7 +9,8 @@ function Router() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/posts/create" element={<CreateNews />} />
-        <Route path="/signin" element={<CreateUser />} />
+        <Route path="/signup" element={<CreateUser />} />
+        <Route path="/signin" element={<Login />} />
         <Route
           path="*"
           element={<Navigate to="/" replace />}

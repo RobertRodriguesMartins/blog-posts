@@ -1,21 +1,18 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createUserThunk, setForm } from '../redux/action/news';
+import { setForm } from '../redux/action/news';
+import loginUserThunk from '../redux/action/login'
 import NavBar from './NavBar';
 
-function CreateUser() {
+function Login() {
   const dispatch = useDispatch();
-  const [err, setErr] = useState(false);
   const form = useSelector((state) => state.news.form);
   let navigate = useNavigate();
 
   function submitForm() {
     const myForm = document.getElementById('user-post');
-    const err = dispatch(createUserThunk(myForm));
-    if (err) {
-      setErr(true)
-    }
+    dispatch(loginUserThunk(myForm));
   }
 
   const redirect = useCallback(() => {
@@ -23,7 +20,6 @@ function CreateUser() {
       replace: true
     })
   }, [navigate])
-
 
   useEffect(() => {
     if (form === 'submitted') {
@@ -40,28 +36,15 @@ function CreateUser() {
         <NavBar />
       </header>
       <section className="app-news-create-form-wrapper correction">
-        {form !== 'submitted' ? (
+        {form === '' || form === 'error' ? (
           <section className="user-section-wrapper">
             <h1>Preencha os campos abaixo</h1>
             <em
               style={{ color: 'red' }}
-            >{`Essa é uma aplicação da testes, utilize dados ficticios. Apenas lembre-se quando for fazer Log-in.`}</em>
+            >{`Olá, obrigado por estar de volta e testar a aplicação :)`}</em>
             <div className="father no-bg-no-border">
               <div className="form-test">
                 <form method="POST" id="user-post">
-                  <div className="create-user-form">
-                    <div>Nome:</div>
-                    <input
-                      type="text"
-                      name="displayName"
-                      id="name"
-                      min="6"
-                      required
-                      placeholder="mínimo 4 caractere"
-                      defaultValue=""
-                      className="no-bg"
-                    />
-                  </div>
                   <div className="create-user-form">
                     <div>Email:</div>
                     <input
@@ -69,7 +52,7 @@ function CreateUser() {
                       type="email"
                       name="email"
                       required
-                      placeholder="exemplo: test@test.com"
+                      placeholder="Seu email"
                       className="no-bg"
                     />
                   </div>
@@ -80,7 +63,7 @@ function CreateUser() {
                       name="password"
                       type="password"
                       required
-                      placeholder="mínimo 6 caractere"
+                      placeholder="Sua senha"
                       className="no-bg"
                     />
                   </div>
@@ -93,7 +76,7 @@ function CreateUser() {
                 className="publish-button nf ma"
                 onClick={submitForm}
               >
-                Criar Conta
+                Entrar
               </button>
             </section>
           </section>
@@ -106,10 +89,10 @@ function CreateUser() {
         )}
       </section>
       { 
-        err && (<div> Dados inválidos, atente-se as regras.</div>)
+        form === 'error' && (<div> Dados incorretos </div>)
       }
     </div>
   );
 }
 
-export default CreateUser;
+export default Login;

@@ -2,7 +2,7 @@
 
 O projeto é uma SPA que utiliza React e Redux, nele você pode criar uma conta e criar posts para que todos vejam.
 
-# Hospedados nas máquinas VPS da Digital Ocean, aplicação está correndo através de uma imagem DOCKER.
+Hospedados nas máquinas VPS da Digital Ocean, aplicação está correndo através de uma imagem DOCKER.
 
  A aplicação não possui workers, o que traz uma limitação em relação ao número de requests simultâneas
 ao banco.
